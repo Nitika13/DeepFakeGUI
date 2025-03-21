@@ -17,32 +17,32 @@ public class DeepfakeDetectorGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
-        getContentPane().setBackground(new Color(18, 18, 18)); // Dark background
+        getContentPane().setBackground(Color.WHITE); // Light background
 
         // Top Panel (Title & Search Bar)
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
-        topPanel.setBackground(new Color(18, 18, 18)); // Dark background
+        topPanel.setBackground(Color.WHITE); // Light background
         topPanel.setBorder(new EmptyBorder(20, 0, 20, 0)); // Add padding
 
         titleLabel = new JLabel("SUDARSHAN", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 40)); // Larger font size
-        titleLabel.setForeground(new Color(0, 255, 255)); // Cyan color
+        titleLabel.setForeground(new Color(0, 100, 200)); // Dark blue
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         subtitleLabel = new JLabel("Deepfake Detector", SwingConstants.CENTER);
         subtitleLabel.setFont(new Font("Arial", Font.PLAIN, 20)); // Larger font size
-        subtitleLabel.setForeground(new Color(200, 200, 200)); // Light gray
+        subtitleLabel.setForeground(new Color(80, 80, 80)); // Dark gray
         subtitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         searchField = new JTextField(20);
         searchField.setMaximumSize(new Dimension(300, 35)); // Larger search bar
         searchField.setFont(new Font("Arial", Font.PLAIN, 14));
         searchField.setAlignmentX(Component.CENTER_ALIGNMENT);
-        searchField.setBackground(new Color(30, 30, 30)); // Dark background
-        searchField.setForeground(Color.WHITE); // White text
+        searchField.setBackground(Color.WHITE); // White background
+        searchField.setForeground(Color.BLACK); // Black text
         searchField.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(0, 255, 255), 1), // Cyan border
+                BorderFactory.createLineBorder(new Color(0, 100, 200), 1), // Dark blue border
                 BorderFactory.createEmptyBorder(5, 10, 5, 10))); // Padding
 
         topPanel.add(titleLabel);
@@ -53,7 +53,7 @@ public class DeepfakeDetectorGUI extends JFrame {
         // Center Panel (Main Content)
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new GridBagLayout());
-        centerPanel.setBackground(new Color(18, 18, 18)); // Dark background
+        centerPanel.setBackground(Color.WHITE); // Light background
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(15, 15, 15, 15); // Add spacing
         gbc.gridx = 0;
@@ -67,12 +67,12 @@ public class DeepfakeDetectorGUI extends JFrame {
         gbc.gridy++;
         fileLabel = new JLabel("No file selected", SwingConstants.CENTER);
         fileLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-        fileLabel.setForeground(Color.WHITE);
+        fileLabel.setForeground(new Color(80, 80, 80)); // Dark gray
         centerPanel.add(fileLabel, gbc);
 
         gbc.gridy++;
         detectButton = new JButton("🚀 Detect Deepfake");
-        styleButton(detectButton, new Color(255, 0, 100)); // Red button
+        styleButton(detectButton, new Color(0, 0, 0)); // Red button
         detectButton.setEnabled(false);
         detectButton.addActionListener(this::runPythonScript);
         centerPanel.add(detectButton, gbc);
@@ -80,36 +80,36 @@ public class DeepfakeDetectorGUI extends JFrame {
         gbc.gridy++;
         resultLabel = new JLabel("Result: Waiting for image...", SwingConstants.CENTER);
         resultLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        resultLabel.setForeground(new Color(0, 255, 0)); // Green text
+        resultLabel.setForeground(new Color(0, 150, 0)); // Green text
         centerPanel.add(resultLabel, gbc);
 
         gbc.gridy++;
         progressBar = new JProgressBar();
         progressBar.setIndeterminate(false);
         progressBar.setVisible(false);
-        progressBar.setForeground(new Color(0, 255, 255)); // Cyan progress bar
-        progressBar.setBackground(new Color(30, 30, 30)); // Dark background
+        progressBar.setForeground(new Color(0, 150, 255)); // Blue progress bar
+        progressBar.setBackground(new Color(240, 240, 240)); // Light gray background
         centerPanel.add(progressBar, gbc);
 
         // Footer Panel
         JPanel footerPanel = new JPanel();
         footerPanel.setLayout(new BoxLayout(footerPanel, BoxLayout.Y_AXIS));
-        footerPanel.setBackground(new Color(18, 18, 18)); // Dark background
+        footerPanel.setBackground(Color.WHITE); // Light background
         footerPanel.setBorder(new EmptyBorder(10, 0, 10, 0)); // Add padding
 
         footerLabel = new JLabel("Visual Information and Signal Processing Team", SwingConstants.CENTER);
         footerLabel.setFont(new Font("Arial", Font.PLAIN, 12));
-        footerLabel.setForeground(new Color(150, 150, 150)); // Light gray
+        footerLabel.setForeground(new Color(120, 120, 120)); // Medium gray
         footerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel affiliationLabel = new JLabel("Affiliation - Thapar", SwingConstants.CENTER);
         affiliationLabel.setFont(new Font("Arial", Font.PLAIN, 12));
-        affiliationLabel.setForeground(new Color(150, 150, 150)); // Light gray
+        affiliationLabel.setForeground(new Color(120, 120, 120)); // Medium gray
         affiliationLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel copyrightLabel = new JLabel("To be Patented ©", SwingConstants.CENTER);
         copyrightLabel.setFont(new Font("Arial", Font.PLAIN, 12));
-        copyrightLabel.setForeground(new Color(150, 150, 150)); // Light gray
+        copyrightLabel.setForeground(new Color(120, 120, 120)); // Medium gray
         copyrightLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         footerPanel.add(footerLabel);
@@ -124,7 +124,7 @@ public class DeepfakeDetectorGUI extends JFrame {
     private void styleButton(JButton button, Color color) {
         button.setFont(new Font("Arial", Font.BOLD, 14));
         button.setBackground(color);
-        button.setForeground(Color.WHITE);
+        button.setForeground(Color.WHITE); // White text for better contrast
         button.setFocusPainted(false);
         button.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(color.darker(), 2), // Darker border
